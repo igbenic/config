@@ -104,8 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # git aliasi
-alias g="git add .; git commit -m"
-alias p="git push"
+# alias g="git add .; git commit -m"
+# alias p="git push"
 
 # flutter
 export PATH="/Users/igbenic/.flutter/bin/:$PATH"
@@ -207,3 +207,7 @@ aic() {
   git push
 }
 
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/igbenic/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/igbenic/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.zsh
+alias home="ssh igbenic@homeserver.local"
