@@ -211,3 +211,15 @@ aic() {
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /Users/igbenic/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/igbenic/.npm/_npx/6913fdfd1ea7a741/node_modules/tabtab/.completions/electron-forge.zsh
 alias home="ssh igbenic@homeserver.local"
+
+alias configrepo='code "$HOME/Projects/config"'
+alias configrepohome='cd "$HOME/Projects/config"'
+alias configinstall='"$HOME/Projects/config/install.sh"'
+alias zshconfig='code "$HOME/Projects/config/shell/.zshrc"'
+alias hammerspoonconfig='code "$HOME/Projects/config/hammerspoon/init.lua"'
+
+[[ -f "$HOME/Projects/config/codex/codex.zsh" ]] && source "$HOME/Projects/config/codex/codex.zsh"
+[[ -f "$HOME/Projects/config/shell/.zshrc.local" ]] && source "$HOME/Projects/config/shell/.zshrc.local"
+
+autoload -U colors && colors
+PS1="%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}${${(%):-%m}} %{$fg[yellow]%}%~ %{$reset_color%}%% "

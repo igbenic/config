@@ -1,0 +1,280 @@
+personality = "friendly"
+model = "gpt-5.4"
+model_reasoning_effort = "xhigh"
+notify = ["/Users/igbenic/.codex/bin/codex-notify-fanout.sh"]
+
+[features]
+streamable_shell = true
+apps = true
+multi_agent = true
+
+[mcp_servers.mssql-local]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=mssql-local", "--idle-timeout-ms=900000", "--", "/opt/homebrew/bin/mssql_mcp_server"]
+
+[mcp_servers.mssql-local.env]
+MSSQL_DATABASE = "OCPP.Core"
+MSSQL_DRIVER = "{ODBC Driver 18 for SQL Server}"
+MSSQL_HOST = "localhost,1433"
+MSSQL_PASSWORD = "DataLab2008"
+MSSQL_USER = "sa"
+TrustServerCertificate = "yes"
+
+[mcp_servers.mssql-frane]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=mssql-frane", "--idle-timeout-ms=900000", "--", "/opt/homebrew/bin/mssql_mcp_server"]
+
+[mcp_servers.mssql-frane.env]
+MSSQL_DATABASE = "TEST_F20_4600"
+MSSQL_DRIVER = "{ODBC Driver 18 for SQL Server}"
+MSSQL_HOST = "onix2.tehnoline.hr,9091"
+MSSQL_PASSWORD = "DataLab2008"
+MSSQL_USER = "sa"
+TrustServerCertificate = "yes"
+
+[mcp_servers.postgres-local]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=postgres-local", "--idle-timeout-ms=900000", "--", "/Users/igbenic/.local/bin/uvx", "postgres-mcp", "--access-mode=unrestricted"]
+
+[mcp_servers.postgres-local.env]
+DATABASE_URI = "postgresql://postgres:postgres@localhost:5432/OnixWebTesting"
+
+[mcp_servers.kubernetes]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=kubernetes", "--idle-timeout-ms=900000", "--", "npx", "-y", "kubernetes-mcp-server@latest", "--read-only", "--disable-multi-cluster", "--kubeconfig=/Users/igbenic/.kube/config"]
+
+[mcp_servers.sentry]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=sentry", "--idle-timeout-ms=0", "--", "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node", "/Users/igbenic/Projects/sentry-mcp/packages/mcp-server/dist/index.cjs", "--host=glitchtip.ib-tehnologije.hr", "--provider=glitchtip"]
+
+[mcp_servers.sentry.env]
+SENTRY_ACCESS_TOKEN = "eb4796a246a6e14f06ce344ea6aa78343398c9c50d74835499797c6d4636f075"
+
+[mcp_servers.chrome_devtools]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=chrome-devtools", "--idle-timeout-ms=900000", "--", "npx", "-y", "chrome-devtools-mcp@latest", "--no-usage-statistics"]
+enabled = false
+
+[mcp_servers.onix-support-ticketing]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=onix-support-ticketing", "--idle-timeout-ms=0", "--", "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node", "/Users/igbenic/Projects/onix-mcp/mcps/onix-support-ticketing/src/index.js"]
+
+[mcp_servers.onix-support-ticketing.env]
+NODE_TLS_REJECT_UNAUTHORIZED = "0"
+ONIX_SUPPORT_API_KEY = "xN2-c400a*>G"
+ONIX_SUPPORT_BASE_URL = "https://grunf.onix-informatika.hr"
+
+[mcp_servers.onix-server]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=onix-server", "--idle-timeout-ms=900000", "--", "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node", "/Users/igbenic/Projects/onix-mcp/mcps/onix-server/src/index.js"]
+
+[mcp_servers.onix-server.env]
+NODE_TLS_REJECT_UNAUTHORIZED = "0"
+ONIX_SERVER_API_KEY = "xN2-c400a*>G"
+ONIX_SERVER_BASE_URL = "https://api.onix-informatika.hr"
+
+[mcp_servers.playwright]
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
+args = ["/Users/igbenic/Projects/onix-mcp/tools/mcp-supervisor.mjs", "--name=playwright", "--idle-timeout-ms=900000", "--", "npx", "-y", "@playwright/mcp@latest"]
+enabled = false
+
+[projects."/Users/igbenic/Projects/dc_bike_buddy"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/OnixPhone"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/WasteWiseWeb"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/waste_wise"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/DCTechPowerBoxAdmin"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/dummy"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/OnixServer"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/URAAresi/URA_TMN"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/SQLProjects"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/IBTechK3SFleetRepo"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/ducati_charge_mobile"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/OCPP.Core"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/tmn"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/ClientServer"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/IBTechWebCore"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/OnixFlow"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/PotreeConverter"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/StableFace"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/FaceEnhance"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/IBTechWebBase"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/EventFlow"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/PythonScripts"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/URA_MIG-steps"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/Flutter-Neumorphic"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/artemis"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/IBTechReactWidgets"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/A00002R-steps"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/URA_MIG-steps"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/Codex"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/testing"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/Diablo0"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/MGGTA"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/MGAnno2"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/nadogradnje"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/priprema"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/docker-firefox"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/OnixClrLibrary"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/montraker"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/Fiskalizacija-WSDL-PROD_v1.10/Fiskalizacija-WSDL-PROD_v1.10"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/newEDI"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/URA"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/selfhosted"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/DANIELI"]
+trust_level = "untrusted"
+
+[projects."/Users/igbenic/Projects"]
+trust_level = "trusted"
+
+[projects."/Applications/VLC.app/Contents/MacOS/share/lua/extensions"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/android-embedded"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/URA"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/hr_einvoice_validation_pipeline_2026"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/odoo-f2"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/odoo-enterprise-main"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/ONXINST-steps"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/odoo-addons"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/wakapi"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/onix-mcp"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/ph/xai-cookbook"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Downloads/ONXPOPR-steps"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/shifthouse_configurator"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/codex-telegram-bridge-docs"]
+trust_level = "trusted"
+
+[projects."/Users/igbenic/Projects/imdb-trakt-sync"]
+trust_level = "trusted"
+
+[notice]
+hide_gpt5_1_migration_prompt = true
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+hide_rate_limit_model_nudge = true
+hide_full_access_warning = true
+
+  [notice.model_migrations]
+  "gpt-5.1-codex-max" = "gpt-5.2-codex"
+
+[plugins."google-calendar@openai-curated"]
+enabled = true
+
+[plugins."gmail@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."google-drive@openai-curated"]
+enabled = true
