@@ -182,7 +182,7 @@ aic() {
   # --sandbox read-only keeps it from doing anything destructive
   msg=$(
     { printf "%s" "$prompt"; git diff --cached; } | codex exec --sandbox read-only \
-    -m gpt-5.1-codex-mini \
+    -m gpt-5.4-mini \
     -c model_reasoning_effort=low \
     -c model_verbosity=low \
     -
@@ -223,3 +223,5 @@ alias hammerspoonconfig='code "$HOME/Projects/config/hammerspoon/init.lua"'
 
 autoload -U colors && colors
 PS1="%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}${${(%):-%m}} %{$fg[yellow]%}%~ %{$reset_color%}%% "
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
