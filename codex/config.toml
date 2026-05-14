@@ -7,6 +7,37 @@ notify = ["/Users/igbenic/.codex/bin/codex-notify-fanout.sh"]
 streamable_shell = true
 apps = true
 multi_agent = true
+codex_hooks = true
+
+[[hooks.SessionStart]]
+matcher = "startup|resume"
+[[hooks.SessionStart.hooks]]
+type = "command"
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node /Users/igbenic/Projects/wakapi/tools/codex-worklog/bin/codex-worklog-hook.mjs"
+timeout = 5
+statusMessage = "Checking Codex worklog queue"
+
+[[hooks.UserPromptSubmit]]
+[[hooks.UserPromptSubmit.hooks]]
+type = "command"
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node /Users/igbenic/Projects/wakapi/tools/codex-worklog/bin/codex-worklog-hook.mjs"
+timeout = 5
+statusMessage = "Starting Codex worklog"
+
+[[hooks.PostToolUse]]
+matcher = "*"
+[[hooks.PostToolUse.hooks]]
+type = "command"
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node /Users/igbenic/Projects/wakapi/tools/codex-worklog/bin/codex-worklog-hook.mjs"
+timeout = 5
+statusMessage = "Recording Codex worklog evidence"
+
+[[hooks.Stop]]
+[[hooks.Stop.hooks]]
+type = "command"
+command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node /Users/igbenic/Projects/wakapi/tools/codex-worklog/bin/codex-worklog-hook.mjs"
+timeout = 30
+statusMessage = "Submitting Codex worklog"
 
 [mcp_servers.mssql-local]
 command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
