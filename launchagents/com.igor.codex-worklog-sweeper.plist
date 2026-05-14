@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.igor.codex-worklog-sweeper</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node</string>
+    <string>/Users/igbenic/Projects/wakapi/tools/codex-worklog/bin/codex-worklog-hook.mjs</string>
+    <string>sweep</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/igbenic/Projects/wakapi</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>CODEX_WORKLOG_STALE_MINUTES</key>
+    <string>240</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StartInterval</key>
+  <integer>3600</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/igbenic/.codex/worklog/sweeper.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/igbenic/.codex/worklog/sweeper.err.log</string>
+</dict>
+</plist>

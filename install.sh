@@ -31,6 +31,17 @@ link_with_backup() {
 link_with_backup "$BASE_DIR/shell/.zshrc" "$HOME/.zshrc"
 link_with_backup "$BASE_DIR/codex/config.toml" "$HOME/.codex/config.toml"
 link_with_backup "$BASE_DIR/codex/bin/codex-notify-fanout.sh" "$HOME/.codex/bin/codex-notify-fanout.sh"
+link_with_backup "$BASE_DIR/launchagents/com.igor.codex-worklog-sweeper.plist" "$HOME/Library/LaunchAgents/com.igor.codex-worklog-sweeper.plist"
 link_with_backup "$BASE_DIR/hammerspoon/init.lua" "$HOME/.hammerspoon/init.lua"
+
+if command -v launchctl >/dev/null 2>&1; then
+  launchctl bootout "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.igor.codex-worklog-sweeper.plist" >/dev/null 2>&1 || true
+  if launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.igor.codex-worklog-sweeper.plist"; then
+    launchctl enable "gui/$(id -u)/com.igor.codex-worklog-sweeper" >/dev/null 2>&1 || true
+    echo "Loaded LaunchAgent: com.igor.codex-worklog-sweeper"
+  else
+    echo "Failed to load LaunchAgent: com.igor.codex-worklog-sweeper" >&2
+  fi
+fi
 
 echo "Managed config links now point at $BASE_DIR"
