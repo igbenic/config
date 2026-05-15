@@ -1,7 +1,6 @@
 personality = "friendly"
 model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
-notify = ["/Users/igbenic/.codex/bin/codex-notify-fanout.sh"]
 
 [features]
 streamable_shell = true
@@ -115,13 +114,6 @@ ONIX_SERVER_BASE_URL = "https://api.onix-informatika.hr"
 [mcp_servers.apple-calendar]
 command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
 args = ["/Users/igbenic/Projects/onix-mcp/mcps/apple-calendar/src/index.js"]
-
-[mcp_servers.telegram-notify]
-command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
-args = ["/Users/igbenic/Projects/onix-mcp/mcps/telegram-notify/src/index.js", "--server-name=telegram-notify"]
-
-[mcp_servers.telegram-notify.env]
-TELEGRAM_NOTIFY_ENV_FILE = "/Users/igbenic/Projects/codex-telegram-bridge-docs/.env"
 
 [mcp_servers.playwright]
 command = "/Users/igbenic/.nvm/versions/node/v22.18.0/bin/node"
@@ -300,9 +292,6 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/igbenic/Projects/shifthouse_configurator"]
-trust_level = "trusted"
-
-[projects."/Users/igbenic/Projects/codex-telegram-bridge-docs"]
 trust_level = "trusted"
 
 [projects."/Users/igbenic/Projects/imdb-trakt-sync"]
